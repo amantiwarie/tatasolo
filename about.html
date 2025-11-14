@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Tatasolo Solar Solutions</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0b6623;
+            --primary-dark: #0a5a1e;
+            --accent: #ffcc00;
+            --light: #f8f9fa;
+            --dark: #212529;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .logo .material-icons {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav a:hover, nav a.active {
+            color: var(--accent);
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        nav a:hover:after, nav a.active:after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .about-hero {
+            background: linear-gradient(rgba(11, 102, 35, 0.8), rgba(11, 102, 35, 0.9)), 
+                        url('images/11.jpg') no-repeat center center/cover;
+            color: white;
+            padding: 120px 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .about-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .about-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: 80px 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 4px;
+            background: var(--accent);
+            bottom: -10px;
+            left: 20%;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Mission Section */
+        .mission {
+            background-color: white;
+        }
+        
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .mission-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+        
+        .mission-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .mission-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .mission-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        /* Team Section */
+        .team {
+            background-color: var(--light);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .team-member {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+        
+        .member-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .member-info {
+            padding: 25px;
+        }
+        
+        .member-info h3 {
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-size: 1.3rem;
+        }
+        
+        .member-role {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-link {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 50px auto 0;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #e0e0e0;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        
+        .timeline-content:after {
+            content: '';
+            position: absolute;
+            border-style: solid;
+            width: 0;
+            height: 0;
+            top: 20px;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content:after {
+            right: -15px;
+            border-width: 15px 0 15px 15px;
+            border-color: transparent transparent transparent white;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content:after {
+            left: -15px;
+            border-width: 15px 15px 15px 0;
+            border-color: transparent white transparent transparent;
+        }
+        
+        .timeline-dot {
+            width: 25px;
+            height: 25px;
+            background: var(--primary);
+            border-radius: 50%;
+            position: absolute;
+            top: 20px;
+            right: -12.5px;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -12.5px;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 50px auto 0;
+            position: relative;
+        }
+        
+        .testimonial {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            padding: 0 20px;
+        }
+        
+        .testimonial-text:before,
+        .testimonial-text:after {
+            content: '"';
+            font-size: 3rem;
+            color: var(--accent);
+            position: absolute;
+            opacity: 0.3;
+        }
+        
+        .testimonial-text:before {
+            top: -20px;
+            left: -10px;
+        }
+        
+        .testimonial-text:after {
+            bottom: -40px;
+            right: -10px;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            margin-top: 20px;
+            color: var(--accent);
+        }
+        
+        .testimonial-role {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav {
+                margin-top: 20px;
+            }
+            
+            nav a {
+                margin: 0 10px;
+                font-size: 0.9rem;
+            }
+            
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .timeline:before {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-dot {
+                left: 18.5px !important;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content:after,
+            .timeline-item:nth-child(even) .timeline-content:after {
+                left: -15px;
+                right: auto;
+                border-width: 15px 15px 15px 0;
+                border-color: transparent white transparent transparent;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <span class="material-icons">solar_power</span>
+                    Tatasolo
+                </a>
+                <nav>
+                    <a href="index.html">Home</a>
+                    <a href="about.html" class="active">About</a>
+                    <a href="products.html">Products</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <h1>About Tatasolo</h1>
+            <p>Leading the solar revolution with innovative and sustainable energy solutions for a brighter, cleaner future.</p>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Mission & Values</h2>
+                <p>Driven by innovation, committed to sustainability</p>
+            </div>
+            
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <i class="material-icons">eco</i>
+                    <h3>Sustainability</h3>
+                    <p>Promoting clean energy solutions that reduce carbon footprint and protect our environment for future generations.</p>
+                </div>
+                
+                <div class="mission-card">
+                    <i class="material-icons">bolt</i>
+                    <h3>Innovation</h3>
+                    <p>Leveraging cutting-edge technology to deliver efficient and reliable solar energy solutions.</p>
+                </div>
+                
+                <div class="mission-card">
+                    <i class="material-icons">groups</i>
+                    <h3>Community</h3>
+                    <p>Empowering communities through accessible and affordable renewable energy solutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="section" style="background-color: #f9f9f9;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Solar Energy?</h2>
+                <p>Discover the benefits of switching to solar power with Tatasolo</p>
+            </div>
+            
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <i class="material-icons">savings</i>
+                    <h3>Save Money</h3>
+                    <p>Reduce your electricity bills by up to 90% and protect yourself from rising energy costs.</p>
+                </div>
+                
+                <div class="mission-card">
+                    <i class="material-icons">monetization_on</i>
+                    <h3>Earn Money</h3>
+                    <p>Sell excess power back to the grid through net metering and earn from your solar investment.</p>
+                </div>
+                
+                <div class="mission-card">
+                    <i class="material-icons">eco</i>
+                    <h3>Go Green</h3>
+                    <p>Reduce your carbon footprint and contribute to a cleaner, more sustainable future.</p>
+                </div>
+                
+                <div class="mission-card">
+                    <i class="material-icons">verified_user</i>
+                    <h3>Government Benefits</h3>
+                    <p>Take advantage of government subsidies and tax benefits for solar panel installations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Journey -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Journey</h2>
+                <p>Milestones in our solar energy revolution</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>2015</h3>
+                        <p>Founded with a vision to make solar energy accessible to all Indian households and businesses.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>2017</h3>
+                        <p>Successfully completed 1000+ residential and commercial solar installations across India.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>2019</h3>
+                        <p>Launched our innovative solar financing program, making solar more affordable than ever.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>2021</h3>
+                        <p>Expanded our operations to 10+ states and received multiple awards for excellence in solar solutions.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>2023</h3>
+                        <p>Celebrated 10,000+ satisfied customers and continued innovation in solar technology.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meet Our Team</h2>
+                <p>The passionate people behind Tatasolo's success</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="images/11.jpg" alt="Team Member" class="member-img">
+                    <div class="member-info">
+                        <h3>Aman Tiwari</h3>
+                        <span class="member-role">Founder & CEO</span>
+                        <p>Visionary leader with 10+ years of experience in renewable energy solutions.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="material-icons">facebook</i></a>
+                            <a href="#" class="social-link"><i class="material-icons">twitter</i></a>
+                            <a href="#" class="social-link"><i class="material-icons">linkedin</i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <img src="images/22.jpg" alt="Team Member" class="member-img">
+                    <div class="member-info">
+                        <h3>Piyush Tiwari</h3>
+                        <span class="member-role">Head of Operations</span>
+                        <p>Expert in solar project management and execution with 8+ years of experience.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="material-icons">facebook</i></a>
+                            <a href="#" class="social-link"><i class="material-icons">twitter</i></a>
+                            <a href="#" class="social-link"><i class="material-icons">linkedin</i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <img src="images/33.jpg" alt="Team Member" class="member-img">
+                    <div class="member-info">
+                        <h3>Yashi Tiwari</h3>
+                        <span class="member-role">Lead Engineer</span>
+                        <p>Specialist in solar panel technology and system optimization.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="material-icons">facebook</i></a>
+                            <a href="#" class="social-link"><i class="material-icons">twitter</i></a>
+                            <a href="#" class="social-link"><i class="material-icons">linkedin</i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: white;">What Our Customers Say</h2>
+                <p>Hear from people who have made the switch to solar with Tatasolo</p>
+            </div>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "Switching to Tatasolo's solar panels was the best decision for our home. Our electricity bills have reduced by 80%, and the installation process was smooth from start to finish."
+                    </div>
+                    <div class="testimonial-author">Rajesh Kumar</div>
+                    <div class="testimonial-role">Homeowner, Delhi</div>
+                </div>
+                
+                <div class="testimonial" style="display: none;">
+                    <div class="testimonial-text">
+                        "The team at Tatasolo provided excellent service and guidance throughout our commercial solar installation. The system has exceeded our energy production expectations."
+                    </div>
+                    <div class="testimonial-author">Neha Gupta</div>
+                    <div class="testimonial-role">Business Owner, Mumbai</div>
+                </div>
+                
+                <div class="testimonial" style="display: none;">
+                    <div class="testimonial-text">
+                        "Professional, reliable, and knowledgeable team. They helped us navigate the government subsidy process and made going solar incredibly easy."
+                    </div>
+                    <div class="testimonial-author">Vikram Singh</div>
+                    <div class="testimonial-role">School Administrator, Bangalore</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section" style="background-color: #f5f9f0; text-align: center;">
+        <div class="container">
+            <h2 style="color: var(--primary); margin-bottom: 20px;">Ready to Go Solar?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                Join thousands of satisfied customers who are already saving with Tatasolo solar solutions.
+            </p>
+            <a href="contact.html" class="btn" style="background: var(--primary); color: white; padding: 15px 40px; font-weight: 600; border-radius: 50px; text-decoration: none; display: inline-block; transition: all 0.3s;">
+                Get Your Free Quote
+            </a>
+        </div>
+    </section>
+
+    <script>
+        // Simple testimonial slider
+        let currentTestimonial = 0;
+        const testimonials = document.querySelectorAll('.testimonial');
+        
+        function showTestimonial(index) {
+            testimonials.forEach(testimonial => {
+                testimonial.style.display = 'none';
+            });
+            
+            testimonials[index].style.display = 'block';
+        }
+        
+        function nextTestimonial() {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }
+        
+        // Change testimonial every 5 seconds
+        showTestimonial(0);
+        setInterval(nextTestimonial, 5000);
+        
+        // Animation on scroll
+        window.addEventListener('scroll', () => {
+            const elements = document.querySelectorAll('.mission-card, .team-member, .timeline-item');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        });
+        
+        // Set initial state for animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.mission-card, .team-member, .timeline-item');
+            elements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            // Trigger animation for first elements
+            setTimeout(() => {
+                const firstElements = document.querySelectorAll('.mission-card');
+                firstElements.forEach(element => {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                });
+            }, 300);
+        });
+    </script>
+</body>
+</html>
